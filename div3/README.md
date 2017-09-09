@@ -9,3 +9,5 @@ STEP II: Take two toggle flip-flops and generate their enables as follows:
 STEP III: Generate the following signals.
 * div1: output of TFF1 -> triggered on rising edge of input clock (ref_clk)
 * div2: output of TFF2 -> triggered on falling edge of input clock (ref_clk)
+
+The code has been verified using Fpga Gate Simulator.
