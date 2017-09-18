@@ -1,12 +1,12 @@
 module wptr_full #(parameter ADDRSIZE = 4)(
-	output wfull,
+	output reg wfull,
 	output reg [ADDRSIZE - 1 : 0] wptr,
 	input afull_n,
 	input winc, wclk, wrst_n
 );
 
 	reg [ADDRSIZE - 1 : 0] wbin;
-	reg wfull, wfull2;
+	reg wfull2;
 
 	wire [ADDRSIZE - 1 : 0] wgnext, wbnext;
 
@@ -31,7 +31,7 @@ module wptr_full #(parameter ADDRSIZE = 4)(
 	//---------------------------------------
 
 	assign wbnext = !wfull ? wbin + winc : wbin;
-	assign wgnext = (wbnext >>) ^ wbnext;
+	assign wgnext = (wbnext >> 1) ^ wbnext;
 
 	always @(posedge wclk or negedge wrst_n or negedge afull_n)
 		if (!wrst_n)

@@ -1,0 +1,1 @@
+Jose S. Simulation and Synthesis Techniques for Aynchronous FIFO Design with Asynchronous Pointer Comparisons[J]. SNUG-2002, 2002.

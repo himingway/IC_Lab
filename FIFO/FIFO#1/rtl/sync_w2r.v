@@ -2,7 +2,7 @@ module sync_w2r #(parameter ADDRSIZE = 4 // Number of mem address bits
 ) (
 	input      [ADDRSIZE:0] wptr,
 	input                   rclk, rrst_n,
-	output reg [ADDRSIZE:0] rq2_wptr,
+	output reg [ADDRSIZE:0] rq2_wptr
 );
 
 	reg [ADDRSIZE:0] rq1_wptr;

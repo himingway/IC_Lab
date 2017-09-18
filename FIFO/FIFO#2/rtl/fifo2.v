@@ -1,5 +1,5 @@
 module fifo2 #(
-	parameter DSIZE = 8
+	parameter DSIZE = 8,
 	parameter ASIZE = 4
 ) (
 	output [DSIZE-1:0] rdata,
@@ -12,19 +12,22 @@ module fifo2 #(
 
 wire [ASIZE-1:0] wptr, rptr;
 wire [ASIZE-1:0] waddr, raddr;
+wire aempty_n;
+wire afull_n;
 
 async_cmp #(ASIZE) async_cmp (
 	.aempty_n(aempty_n),
 	.afull_n (afull_n),
 	.wptr    (wptr),
-	.rptr    (rptr)
+	.rptr    (rptr),
+	.wrst_n  (wrst_n)
 );
 
 fifomem #(DSIZE, ASIZE) fifomem (
 	.wdata (wdata),
-	.waddr (waddr),
-	.raddr (raddr),
-	.wclken(wclken),
+	.waddr (wptr),
+	.raddr (rptr),
+	.wclken(winc),
 	.wclk  (wclk),
 	.rdata (rdata)
 );

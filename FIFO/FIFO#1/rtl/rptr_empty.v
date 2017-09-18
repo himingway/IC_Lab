@@ -8,28 +8,30 @@ module rptr_empty #(parameter ADDRSIZE = 4 // Number of mem address bits
 );
 
 	reg [ADDRSIZE:0] rbin;
+
 	wire [ADDRSIZE:0] rgraynext, rbinnext;
+	wire              rempty_var;
 
 	//-------------------
 	// GRAYSTYLE2 pointer
 	//-------------------
-	always @(posedge rclk or negedge rrst_n) begin 
+	always @(posedge rclk or negedge rrst_n) begin
 		if (!rrst_n)
 			{rbin, rptr} <= 0;
 		else
 			{rbin, rptr} <= {rbinnext, rgraynext};
 	end
-		assign raddr = rbin[ADDRSIZE-1:0];
-		assign rbinnext = rbin + (rinc & ~ rempty)
-		assign rgraynext = (rbinnext >> 1) ^ rbinnext;
+	assign raddr     = rbin[ADDRSIZE-1:0];
+	assign rbinnext  = rbin + (rinc & ~ rempty);
+	assign rgraynext = (rbinnext >> 1) ^ rbinnext;
 
-		assign rempty_var = (rgraynext = rq2_wptr);
+	assign rempty_var = (rgraynext == rq2_wptr);
 
-		always @(posedge rclk or negedge rrst_n) begin 
-			if (!rrst_n)
-				rempty <= 1'b1;
-			else
-				rempty <= rempty <= rempty_var;
-		end
+	always @(posedge rclk or negedge rrst_n) begin
+		if (!rrst_n)
+			rempty <= 1'b1;
+		else
+			rempty <= rempty_var;
+	end
 
 endmodule

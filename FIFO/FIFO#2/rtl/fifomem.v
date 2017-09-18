@@ -1,6 +1,6 @@
 //`define VENDORRAM
 module fifomem #(
-	parameter DATASIZE = 8 // Memory data word width
+	parameter DATASIZE = 8, // Memory data word width
 	parameter ADDRSIZE = 4  // Number of mem address bits
 ) (
 	input  [DATASIZE-1:0] wdata ,
@@ -27,7 +27,7 @@ module fifomem #(
 		assign rdata = mem [raddr];
 
 		always @(posedge wclk) begin
-			if (wclken && !wfull)
+			if (wclken)
 				mem[waddr] <= wdata;
 		end
 		

@@ -1,0 +1,1 @@
+Cummings C E. Simulation and synthesis techniques for asynchronous FIFO design[C]//SNUG 2002 (Synopsys Users Group Conference, San Jose, CA, 2002) User Papers. 2002.
