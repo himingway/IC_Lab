@@ -7,3 +7,4 @@ IC Lab -- Implement some funny thing about IC design
 * FIFO: Asynchronous FIFO
 * Synchronized Asynchronous Reset: Synchronized Asynchronous Reset
 * Synchromozer: Synchromozer
+* Others: *&#@%^%&@#$^
