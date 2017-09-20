@@ -1,5 +1,5 @@
-# Verilog_Lab
-Verilog Lab -- Implement some algorithms using Verilog HDL
+# IC_Lab
+IC Lab -- Implement some funny thing about IC design
 
 ## Catalogue
 
