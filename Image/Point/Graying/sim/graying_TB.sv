@@ -81,7 +81,7 @@ module Graying_TB();
 	endtask : work_regack
 
 	initial begin
-		fi = $fopen("../image/imgindex.dat","r");
+		fi = $fopen("./imgindex.dat","r");
 		while (!$feof(fi)) begin
 			fst = $fscanf(fi, "%s", ftmp);
 			fname.push_front(ftmp);

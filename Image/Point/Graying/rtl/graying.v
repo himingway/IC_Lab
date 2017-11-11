@@ -36,9 +36,9 @@ module graying #(
 		end
 
 		always @(*) begin
-			mul_r = 313524 * {{(12 - color_width){1'b0}},r} >> 20;
-			mul_g = 615514 * {{(12 - color_width){1'b0}},g} >> 20;
-			mul_b = 119537 * {{(12 - color_width){1'b0}},b} >> 20;
+			mul_r = ((313524 * {{(12 - color_width){1'b0}},r}) >> 20);
+			mul_g = ((615514 * {{(12 - color_width){1'b0}},g}) >> 20);
+			mul_b = ((119537 * {{(12 - color_width){1'b0}},b}) >> 20);
 		end
 
 		always @(posedge clk) begin
@@ -57,13 +57,13 @@ module graying #(
 		always @(posedge clk or negedge rst_n or negedge in_enable) begin
 			if (~rst_n || ~in_enable)
 				con_enable <= 0;
-			else if (con_enable == mul_delay + 1)
+			else if (con_enable == mul_delay + 2)
 				con_enable <= con_enable;
 			else
 				con_enable <= con_enable + 1'b1;
 		end
 
-		assign out_ready = (con_enable == mul_delay + 1) ? 1'd1 : 1'd0;
+		assign out_ready = (con_enable == mul_delay + 2) ? 1'd1 : 1'd0;
 		assign out_data = out_ready ? reg_out_data : 'd0;
 	endgenerate
 
