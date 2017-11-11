@@ -32,12 +32,12 @@ if __name__ == '__main__':
 	for root, name, ex in FileAll:
 		im_src = Image.open(root+name+ex)
 		xsize, ysize = im_src.size
-		dat_res = open('./images/%s.dat' %name, 'w')
+		dat_res = open('../sim/%s.dat' %name, 'w')
 		dat_res.write('%d\n%d\n' %(xsize,ysize))
 		dat_res.write(create_dat(im_src))
 		dat_index += name + '\n'
 		dat_res.close()
 	dat_index = dat_index[:-1]
-	dat_index_f = open('./images/imgindex.dat','w')
+	dat_index_f = open('../sim/imgindex.dat','w')
 	dat_index_f.write(dat_index)
 	dat_index_f.close()

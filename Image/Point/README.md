@@ -3,5 +3,6 @@ IC Lab -- Implement some funny thing about IC design
 
 ## Catalogue
 
-* Graying：Graying operation
-* Threshold: Threshold operation
+* Graying：Graying Operation
+* Threshold: Threshold Operation
+* ContrastTransform：Contrast Transform Operation
